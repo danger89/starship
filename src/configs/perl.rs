@@ -1,8 +1,9 @@
-use crate::config::{ModuleConfig, RootModuleConfig};
+use crate::config::ModuleConfig;
 
+use serde::Serialize;
 use starship_module_config_derive::ModuleConfig;
 
-#[derive(Clone, ModuleConfig)]
+#[derive(Clone, ModuleConfig, Serialize)]
 pub struct PerlConfig<'a> {
     pub symbol: &'a str,
     pub style: &'a str,
@@ -13,8 +14,8 @@ pub struct PerlConfig<'a> {
     pub detect_folders: Vec<&'a str>,
 }
 
-impl<'a> RootModuleConfig<'a> for PerlConfig<'a> {
-    fn new() -> Self {
+impl<'a> Default for PerlConfig<'a> {
+    fn default() -> Self {
         PerlConfig {
             symbol: "🐪 ",
             style: "149 bold",

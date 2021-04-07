@@ -1,8 +1,9 @@
-use crate::config::{ModuleConfig, RootModuleConfig};
+use crate::config::ModuleConfig;
 
+use serde::Serialize;
 use starship_module_config_derive::ModuleConfig;
 
-#[derive(Clone, ModuleConfig)]
+#[derive(Clone, ModuleConfig, Serialize)]
 pub struct RubyConfig<'a> {
     pub format: &'a str,
     pub symbol: &'a str,
@@ -13,8 +14,8 @@ pub struct RubyConfig<'a> {
     pub detect_folders: Vec<&'a str>,
 }
 
-impl<'a> RootModuleConfig<'a> for RubyConfig<'a> {
-    fn new() -> Self {
+impl<'a> Default for RubyConfig<'a> {
+    fn default() -> Self {
         RubyConfig {
             format: "via [$symbol($version )]($style)",
             symbol: "💎 ",

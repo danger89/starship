@@ -1,8 +1,9 @@
-use crate::config::{ModuleConfig, RootModuleConfig};
+use crate::config::ModuleConfig;
 
+use serde::Serialize;
 use starship_module_config_derive::ModuleConfig;
 
-#[derive(Clone, ModuleConfig)]
+#[derive(Clone, ModuleConfig, Serialize)]
 pub struct ShellConfig<'a> {
     pub format: &'a str,
     pub bash_indicator: &'a str,
@@ -15,8 +16,8 @@ pub struct ShellConfig<'a> {
     pub disabled: bool,
 }
 
-impl<'a> RootModuleConfig<'a> for ShellConfig<'a> {
-    fn new() -> Self {
+impl<'a> Default for ShellConfig<'a> {
+    fn default() -> Self {
         ShellConfig {
             format: "$indicator ",
             bash_indicator: "bsh",

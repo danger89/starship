@@ -1,8 +1,9 @@
-use crate::config::{ModuleConfig, RootModuleConfig};
+use crate::config::ModuleConfig;
 
+use serde::Serialize;
 use starship_module_config_derive::ModuleConfig;
 
-#[derive(Clone, ModuleConfig)]
+#[derive(Clone, ModuleConfig, Serialize)]
 pub struct JavaConfig<'a> {
     pub disabled: bool,
     pub format: &'a str,
@@ -13,8 +14,8 @@ pub struct JavaConfig<'a> {
     pub detect_folders: Vec<&'a str>,
 }
 
-impl<'a> RootModuleConfig<'a> for JavaConfig<'a> {
-    fn new() -> Self {
+impl<'a> Default for JavaConfig<'a> {
+    fn default() -> Self {
         JavaConfig {
             format: "via [$symbol($version )]($style)",
             disabled: false,

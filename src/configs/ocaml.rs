@@ -1,9 +1,12 @@
-use crate::config::{ModuleConfig, RootModuleConfig};
+use crate::config::ModuleConfig;
 
+use serde::Serialize;
 use starship_module_config_derive::ModuleConfig;
 
-#[derive(Clone, ModuleConfig)]
+#[derive(Clone, ModuleConfig, Serialize)]
 pub struct OCamlConfig<'a> {
+    pub global_switch_indicator: &'a str,
+    pub local_switch_indicator: &'a str,
     pub format: &'a str,
     pub symbol: &'a str,
     pub style: &'a str,
@@ -13,10 +16,12 @@ pub struct OCamlConfig<'a> {
     pub detect_folders: Vec<&'a str>,
 }
 
-impl<'a> RootModuleConfig<'a> for OCamlConfig<'a> {
-    fn new() -> Self {
+impl<'a> Default for OCamlConfig<'a> {
+    fn default() -> Self {
         OCamlConfig {
-            format: "via [$symbol($version )]($style)",
+            global_switch_indicator: "",
+            local_switch_indicator: "*",
+            format: "via [$symbol($version )(\\($switch_indicator$switch_name\\) )]($style)",
             symbol: "🐫 ",
             style: "bold yellow",
             disabled: false,

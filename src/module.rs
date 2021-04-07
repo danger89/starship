@@ -34,6 +34,7 @@ pub const ALL_MODULES: &[&str] = &[
     "hg_branch",
     "hostname",
     "java",
+    "scala",
     "jobs",
     "julia",
     "kotlin",
@@ -62,6 +63,7 @@ pub const ALL_MODULES: &[&str] = &[
     "status",
     "time",
     "username",
+    "vcsh",
     "vagrant",
     "zig",
 ];

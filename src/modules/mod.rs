@@ -43,6 +43,7 @@ mod purescript;
 mod python;
 mod ruby;
 mod rust;
+mod scala;
 mod shell;
 mod shlvl;
 mod singularity;
@@ -53,6 +54,7 @@ mod time;
 mod username;
 mod utils;
 mod vagrant;
+mod vcsh;
 mod zig;
 
 #[cfg(feature = "battery")]
@@ -114,6 +116,7 @@ pub fn handle<'a>(module: &str, context: &'a Context) -> Option<Module<'a>> {
             "python" => python::module(context),
             "ruby" => ruby::module(context),
             "rust" => rust::module(context),
+            "scala" => scala::module(context),
             "shell" => shell::module(context),
             "shlvl" => shlvl::module(context),
             "singularity" => singularity::module(context),
@@ -124,6 +127,7 @@ pub fn handle<'a>(module: &str, context: &'a Context) -> Option<Module<'a>> {
             "crystal" => crystal::module(context),
             "username" => username::module(context),
             "vagrant" => vagrant::module(context),
+            "vcsh" => vcsh::module(context),
             "zig" => zig::module(context),
             _ => {
                 eprintln!("Error: Unknown module {}. Use starship module --list to list out all supported modules.", module);
@@ -192,6 +196,7 @@ pub fn description(module: &str) -> &'static str {
         "python" => "The currently installed version of Python",
         "ruby" => "The currently installed version of Ruby",
         "rust" => "The currently installed version of Rust",
+        "scala" => "The currently installed version of Scala",
         "swift" => "The currently installed version of Swift",
         "shell" => "The currently used shell indicator",
         "shlvl" => "The current value of SHLVL",
@@ -200,6 +205,7 @@ pub fn description(module: &str) -> &'static str {
         "time" => "The current local time",
         "username" => "The active user's username",
         "vagrant" => "The currently installed version of Vagrant",
+        "vcsh" => "The currently active VCSH repository",
         "zig" => "The currently installed version of Zig",
         _ => "<no description>",
     }

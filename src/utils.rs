@@ -86,6 +86,10 @@ Elixir 1.10 (compiled with Erlang/OTP 22)\n",
             stdout: String::from("OpenJDK 64-Bit Server VM (13.0.2+8) for bsd-amd64 JRE (13.0.2+8), built on Feb  6 2020 02:07:52 by \"brew\" with clang 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17)"),
             stderr: String::default(),
         }),
+        "scalac -version" => Some(CommandOutput {
+            stdout: String::from("Scala compiler version 2.13.5 -- Copyright 2002-2020, LAMP/EPFL and Lightbend, Inc."),
+            stderr: String::default(),
+        }),
         "julia --version" => Some(CommandOutput {
             stdout: String::from("julia version 1.4.0\n"),
             stderr: String::default(),
@@ -123,6 +127,10 @@ active boot switches: -d:release\n",
         }),
         "ocaml -vnum" => Some(CommandOutput {
             stdout: String::from("4.10.0\n"),
+            stderr: String::default(),
+        }),
+        "opam switch show --safe" => Some(CommandOutput {
+            stdout: String::from("default\n"),
             stderr: String::default(),
         }),
         "esy ocaml -vnum" => Some(CommandOutput {
